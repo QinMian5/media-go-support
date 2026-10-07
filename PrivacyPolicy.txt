@@ -1,42 +1,42 @@
-Media Go 隐私政策
-更新日期：2026 年 10 月 7 日
+Media Go Privacy Policy
+Updated: October 7, 2026
 
-Media Go 是由 Mian Qin 开发的音频采集工具。你可以在本机录音、添加用途和标注，并将内容交给自己配置的接收端。日常使用由每位用户管理自己的接收端；开发者另提供仅用于苹果审核的测试接收端。
+Media Go is an audio capture tool developed by Mian Qin. You can record locally, add a purpose and annotations, and upload to a receiver you configure. Each user manages their own receiver for normal use. The developer also provides a test receiver exclusively for Apple review.
 
-录音与交付
+Recording and delivery
 
-只有你主动开始采集并允许麦克风访问后，App 才会录音。录音会保存在 App 的本地目录；你开始的录音可以在后台或锁屏时继续，直到你停止或系统中断。
+The app records only after you start a capture and grant microphone access. Audio is saved in the app's local directory. A recording you start can continue in the background or while the screen is locked until you stop it or the system interrupts it.
 
-未设置接收端且条目尚未绑定接收目标时，内容仅保存在本机。设置接收端后，待交付条目会按其交付模式继续上传。整段上传在你确认标注后发送完整音频；持续上传会在录音过程中发送音频片段，停止后发送录音清单和最终标注。
+Without a configured receiver, items that are not already bound to a receiver stay on this device. After you configure a receiver, pending items can resume delivery according to their delivery mode. Whole recording sends the complete audio after you confirm annotations. Continuous upload sends audio segments while recording, then sends the recording manifest and final annotations after you stop and confirm.
 
-接收端会收到音频、你填写的用途和标注，以及完成交付所需的条目身份、采集时间、时长、片段顺序和完整性信息。连接测试也会联系你输入的接收端。接收端可能看到网络地址以及你配置的认证信息。
+Your receiver receives audio, the purpose and annotations you enter, and the item ID, capture time, duration, segment order, and completeness information needed for delivery. Connection tests contact the URL you enter. The receiver can also see your network address and any authentication information you configure.
 
-接收端由你选择和管理，其保存、访问、后续处理和删除规则由该服务决定。Media Go 开发者不会自动收到你的录音或标注。请使用你信任的接收端；公网连接应使用 HTTPS。普通 HTTP 本身不加密，若经 VPN 或 Tailscale 访问，其隧道保护由相应服务提供。
+You choose and manage your receiver. Its service determines storage, access, further processing, and deletion. The Media Go developer does not automatically receive your recordings or annotations. Use a receiver you trust and HTTPS for public connections. Plain HTTP is not encrypted; any protection from a VPN or Tailscale tunnel is provided by that service.
 
-审核专用接收端
+Dedicated Apple review receiver
 
-仅当审核人员手动配置开发者提供的审核地址和认证凭据时，测试音频、用途、标注和交付信息会发送至开发者管理、由 Cloudflare 托管的审核接收端。它只用于测试音频，不作为日常用户或朋友试用的默认接收端。开发者可以访问这些测试内容，仅用于验证音频交付功能；不用于广告、分析、模型训练或与账号、设备身份建立关联。
+Test audio, purposes, annotations, and delivery information reach the developer's Cloudflare-hosted review receiver only when a reviewer manually enters its URL and credentials. It is for test audio only and is not the default receiver for everyday users or friends testing the app. The developer can access this test content solely to verify audio delivery. It is not used for advertising, analytics, model training, or association with account or device identities.
 
-所有媒体读写均需要认证。服务在一条测试录音首次接收 24 小时后停止提供该条目的读取，并启动删除音频、标注和清单；后台删除执行可能有延迟。标注和清单的底层恢复备份由托管平台保留最长 30 天，服务不会主动使用这些备份。开发者也可提前删除测试内容。审核时请使用不含私人信息的短测试音频。
+All media reads and writes require authentication. Access to a test recording expires 24 hours after its first receipt, and deletion of its audio, annotations, and manifest is initiated. Background deletion may take longer to execute. The hosting platform retains underlying recovery backups of annotation and manifest metadata for up to 30 days; the service does not actively use these backups. The developer can delete test content sooner. Please use short test recordings without personal information during review.
 
-审核服务关闭应用请求日志和追踪。Cloudflare 在提供网络与存储服务时仍可能处理网络地址等必要服务信息，其平台安全与运维处理遵循 Cloudflare 的相应规则。
+Application request logging and tracing are disabled on the review service. Cloudflare may still process network addresses and other information necessary to provide network and storage services. Its platform security and operational processing follow Cloudflare's applicable policies.
 
-本地设置与权限
+Local settings and permissions
 
-接收地址、采集按钮和清理选项保存在本机。接收端的认证凭据保存在本机钥匙串，你可以在对应接收端设置中移除凭据。磁盘剩余空间仅用于录音和上传前的容量检查与不足提示，不发送给接收端。
+Receiver URLs, capture buttons, and cleanup preferences are stored on this device. Receiver credentials are stored in this device's Keychain and can be removed in the settings for that receiver. Available disk space is checked only to assess capacity before recording and uploading and to show storage warnings. It is not sent to the receiver.
 
-局域网权限用于连接你配置的本地接收端。通知权限用于录音中断等提醒；实时活动显示正在进行的录音。你可以在 iOS 设置中管理权限。App 未集成广告、用户追踪或第三方分析 SDK，也不主动向开发者发送使用统计。
+Local network access connects to a local receiver you configure. Notification permission supports alerts such as recording interruptions. Live Activities display an ongoing recording. You can manage permissions in iOS Settings. The app contains no advertising, user tracking, or third-party analytics SDKs and does not proactively send usage statistics to the developer.
 
-保存与删除
+Retention and deletion
 
-尚未完成上传的音频会保留在本机，除非你主动放弃或删除媒体条目。默认在上传完成 7 天后允许自动清理本地音频；你可以选择不清理、1 天、7 天或 30 天。实际清理发生在 App 后续运行或操作时。清理后保留条目记录、标注和接收回执，不能再本地回放。
+Audio that has not finished uploading stays on this device unless you explicitly discard or delete the media item. By default, local audio becomes eligible for automatic cleanup 7 days after upload completes. You can choose Never, 1 day, 7 days, or 30 days. Cleanup runs when the app subsequently runs or performs relevant operations. Item records, annotations, and save receipts remain after cleanup, but local playback is no longer available.
 
-删除媒体条目会移除 App 内的记录和本地音频，并放弃尚未完成的上传。持续上传中已经发送的片段、在途请求及接收端已经保存的内容不会因此被撤回；删除接收端数据需由你在该服务中操作。修改接收地址也不会撤回已发送的内容。
+Deleting a media item removes its app record and local audio and abandons unfinished uploads. Segments already sent by continuous upload, requests in flight, and content already saved by a receiver are not recalled. Delete receiver-side data in that service. Changing the receiver URL does not recall content already sent.
 
-iOS 的设备备份、系统诊断，以及 TestFlight 的崩溃报告和主动反馈由 Apple 的相应功能与隐私规则管理。你主动提交反馈时，开发者可能收到你提交的说明、截图或诊断信息，请按需要决定分享哪些内容。
+iOS device backups, system diagnostics, and TestFlight crash reports and voluntary feedback are managed by Apple's respective features and privacy policies. If you submit feedback, the developer may receive the description, screenshots, or diagnostics you choose to share.
 
-联系与更新
+Contact and updates
 
-有关本政策或 App 的问题，请发送邮件至 qinmian2001@icloud.com。TestFlight 试用期间也可通过 TestFlight 的“发送 Beta 反馈”联系开发者。
+For questions about this policy or the app, email qinmian2001@icloud.com. During TestFlight testing, you can also use Send Beta Feedback in TestFlight.
 
-本政策随 App 更新。若增加由开发者接收数据的服务或分析功能，将更新政策与 App Store 隐私披露。
+This policy is updated with the app. If developer-operated data services or analytics are added, the policy and App Store privacy disclosures will be updated.

@@ -1,11 +1,11 @@
-# Media Go 公开说明
+# Media Go public documentation
 
-本仓库只包含 Media Go 的使用支持、隐私政策和接收端接口说明。App 源码独立维护。
+This repository contains Media Go support, privacy information, and the receiver API contract. App source code is maintained separately.
 
-- [使用支持](https://qinmian5.github.io/media-go-support/)
-- [隐私政策](https://qinmian5.github.io/media-go-support/privacy.html)
-- [接收端接口](https://qinmian5.github.io/media-go-support/receiver.html)
+- [Support](https://qinmian5.github.io/media-go-support/)
+- [Privacy policy](https://qinmian5.github.io/media-go-support/privacy.html)
+- [Receiver API](https://qinmian5.github.io/media-go-support/receiver.html)
 
-联系邮箱：qinmian2001@icloud.com。
+Contact: qinmian2001@icloud.com.
 
-通过 GitHub Pages 从 main 分支的根目录发布，无脚本、分析 SDK 或第三方字体。隐私政策的 HTML 与纯文本内容一致；更新 App 内政策时，应同步此仓库。
+GitHub Pages publishes the root of the main branch. The site uses no scripts, analytics SDKs, or third-party fonts. The HTML and plain-text privacy policies share the same content; keep them synchronized with the policy bundled in the app.
