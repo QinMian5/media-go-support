@@ -2,12 +2,16 @@
 <html lang="zh-Hans">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Media Go 的使用支持、接收端接口和隐私政策。"><title>隐私政策 · Media Go</title><style>*{box-sizing:border-box}body{margin:0;color:#20242a;background:#f7f8fa;font:17px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}header,main,footer{max-width:820px;margin:auto;padding:24px}header{border-bottom:1px solid #d9dde4}header a{color:#20242a;text-decoration:none;font-weight:650}nav{float:right;display:flex;gap:20px}nav a{font-size:15px;font-weight:400}main{padding-top:36px;padding-bottom:56px}h1{font-size:34px;line-height:1.3;margin:0 0 18px}h2{font-size:23px;margin:38px 0 12px}p{margin:0 0 18px}a{color:#175ac6;overflow-wrap:anywhere}li{margin:9px 0}code,pre{font:14px/1.65 ui-monospace,SFMono-Regular,Menlo,monospace;background:#e9edf2;border-radius:5px}code{padding:2px 5px}pre{padding:16px;overflow-x:auto}footer{border-top:1px solid #d9dde4;color:#59626f;font-size:14px}@media(max-width:520px){header,main,footer{padding-left:20px;padding-right:20px}nav{float:none;margin-top:12px}h1{font-size:29px}}</style></head>
 <body><header><a href="./">Media Go</a><nav aria-label="页面导航"><a href="./">使用支持</a><a href="privacy.html">隐私政策</a><a href="receiver.html">接收端接口</a></nav></header><main><h1>Media Go 隐私政策</h1><p>更新日期：2026 年 10 月 7 日</p>
-<p>Media Go 是由 Mian Qin 开发的音频采集工具。你可以在本机录音、添加用途和标注，并将内容交给自己配置的接收端。App 不提供开发者运营的媒体存储服务。</p>
+<p>Media Go 是由 Mian Qin 开发的音频采集工具。你可以在本机录音、添加用途和标注，并将内容交给自己配置的接收端。日常使用由每位用户管理自己的接收端；开发者另提供仅用于苹果审核的测试接收端。</p>
 <h2>录音与交付</h2>
 <p>只有你主动开始采集并允许麦克风访问后，App 才会录音。录音会保存在 App 的本地目录；你开始的录音可以在后台或锁屏时继续，直到你停止或系统中断。</p>
 <p>未设置接收端且条目尚未绑定接收目标时，内容仅保存在本机。设置接收端后，待交付条目会按其交付模式继续上传。整段上传在你确认标注后发送完整音频；持续上传会在录音过程中发送音频片段，停止后发送录音清单和最终标注。</p>
 <p>接收端会收到音频、你填写的用途和标注，以及完成交付所需的条目身份、采集时间、时长、片段顺序和完整性信息。连接测试也会联系你输入的接收端。接收端可能看到网络地址以及你配置的认证信息。</p>
 <p>接收端由你选择和管理，其保存、访问、后续处理和删除规则由该服务决定。Media Go 开发者不会自动收到你的录音或标注。请使用你信任的接收端；公网连接应使用 HTTPS。普通 HTTP 本身不加密，若经 VPN 或 Tailscale 访问，其隧道保护由相应服务提供。</p>
+<h2>审核专用接收端</h2>
+<p>仅当审核人员手动配置开发者提供的审核地址和认证凭据时，测试音频、用途、标注和交付信息会发送至开发者管理、由 Cloudflare 托管的审核接收端。它只用于测试音频，不作为日常用户或朋友试用的默认接收端。开发者可以访问这些测试内容，仅用于验证音频交付功能；不用于广告、分析、模型训练或与账号、设备身份建立关联。</p>
+<p>所有媒体读写均需要认证。服务在一条测试录音首次接收 24 小时后停止提供该条目的读取，并启动删除音频、标注和清单；后台删除执行可能有延迟。标注和清单的底层恢复备份由托管平台保留最长 30 天，服务不会主动使用这些备份。开发者也可提前删除测试内容。审核时请使用不含私人信息的短测试音频。</p>
+<p>审核服务关闭应用请求日志和追踪。Cloudflare 在提供网络与存储服务时仍可能处理网络地址等必要服务信息，其平台安全与运维处理遵循 Cloudflare 的相应规则。</p>
 <h2>本地设置与权限</h2>
 <p>接收地址、采集按钮和清理选项保存在本机。接收端的认证凭据保存在本机钥匙串，你可以在对应接收端设置中移除凭据。磁盘剩余空间仅用于录音和上传前的容量检查与不足提示，不发送给接收端。</p>
 <p>局域网权限用于连接你配置的本地接收端。通知权限用于录音中断等提醒；实时活动显示正在进行的录音。你可以在 iOS 设置中管理权限。App 未集成广告、用户追踪或第三方分析 SDK，也不主动向开发者发送使用统计。</p>
