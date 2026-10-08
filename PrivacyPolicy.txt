@@ -1,7 +1,7 @@
 Media Go Privacy Policy
 Updated: October 7, 2026
 
-Media Go is an audio capture tool developed by Mian Qin. You can record locally, add a purpose and annotations, and upload to a receiver you configure. Each user manages their own receiver for normal use. The developer also provides a test receiver exclusively for Apple review.
+Media Go is an audio capture tool developed by Mian Qin. You can record locally, add annotations, and upload to a receiver you configure. Each user manages their own receiver for normal use. The developer also provides a test receiver exclusively for Apple review.
 
 Recording and delivery
 
@@ -9,13 +9,13 @@ The app records only after you start a capture and grant microphone access. Audi
 
 Without a configured receiver, items that are not already bound to a receiver stay on this device. After you configure a receiver, pending items can resume delivery according to their delivery mode. Whole recording sends the complete audio after you confirm annotations. Continuous upload sends audio segments while recording, then sends the recording manifest and final annotations after you stop and confirm.
 
-Your receiver receives audio, the purpose and annotations you enter, and the item ID, capture time, duration, segment order, and completeness information needed for delivery. Connection tests contact the URL you enter. The receiver can also see your network address and any authentication information you configure.
+Your receiver receives audio, the annotations you enter, and the item ID, capture time, duration, segment order, and completeness information needed for delivery. Connection tests contact the URL you enter. The receiver can also see your network address and any authentication information you configure.
 
 You choose and manage your receiver. Its service determines storage, access, further processing, and deletion. The Media Go developer does not automatically receive your recordings or annotations. Use a receiver you trust and HTTPS for public connections. Plain HTTP is not encrypted; any protection from a VPN or Tailscale tunnel is provided by that service.
 
 Dedicated Apple review receiver
 
-Test audio, purposes, annotations, and delivery information reach the developer's Cloudflare-hosted review receiver only when a reviewer manually enters its URL and credentials. It is for test audio only and is not the default receiver for everyday users or friends testing the app. The developer can access this test content solely to verify audio delivery. It is not used for advertising, analytics, model training, or association with account or device identities.
+Test audio, annotations, and delivery information reach the developer's Cloudflare-hosted review receiver only when a reviewer manually enters its URL and credentials. It is for test audio only and is not the default receiver for everyday users or friends testing the app. The developer can access this test content solely to verify audio delivery. It is not used for advertising, analytics, model training, or association with account or device identities.
 
 All media reads and writes require authentication. Access to a test recording expires 24 hours after its first receipt, and deletion of its audio, annotations, and manifest is initiated. Background deletion may take longer to execute. The hosting platform retains underlying recovery backups of annotation and manifest metadata for up to 30 days; the service does not actively use these backups. The developer can delete test content sooner. Please use short test recordings without personal information during review.
 

@@ -4,7 +4,7 @@ Public receiver protocol for Media Go 0.1.0.
 
 ## 1. Capture and delivery
 
-A media item uses an immutable snapshot of its capture button: purpose, delivery mode, segment length, and annotation fields. Later edits or deletion of the button do not change existing items.
+A media item uses an immutable snapshot of its capture button: delivery mode, segment length, and annotation fields. Later edits or deletion of the button do not change existing items.
 
 Audio is PCM16 WAV, 48 kHz, mono. Whole recording sends one complete WAV using `file` only after the user stops and confirms annotations; nothing for that item is sent before confirmation. There is no application-level recording duration limit. Continuous upload closes and uploads segments while recording, with a configured length of 1–600 whole seconds. A nonempty final segment may be shorter. After annotation confirmation, it submits a manifest and capture outcome using `finalize`.
 
@@ -35,10 +35,9 @@ Every operation except `test` includes:
 | --- | --- |
 | `operation` | `file`, `segment`, or `finalize` |
 | `media_id` | Client-generated, persisted UUID shared by all operations for the recording |
-| `purpose` | Arbitrary button-snapshot text; no application-level length limit; send `""` when empty |
 | `annotations` | JSON object derived from annotation fields; `{}` when empty |
 
-New captures get new IDs; retries keep their IDs. Purpose and delivery mode are fixed for a media ID. Do not mix `file` with `segment`/`finalize` under the same ID.
+New captures get new IDs; retries keep their IDs. Delivery mode is fixed for a media ID. Do not mix `file` with `segment`/`finalize` under the same ID.
 
 Users define only the contents of `annotations`, not protocol field names or structure. Dotted keys form nested objects: `speaker.name` produces `{"speaker":{"name":"Alex"}}`. Each level contains one or more letters, digits, or underscores. Keys cannot duplicate or conflict as parent and child, such as `speaker` and `speaker.name`.
 
@@ -54,7 +53,6 @@ Example metadata, with a sample UUID:
 {
   "operation": "file",
   "media_id": "00000000-0000-4000-8000-000000000001",
-  "purpose": "",
   "annotations": {
     "kind": "recording",
     "speaker": {"name": "Alex"},
@@ -72,7 +70,6 @@ Include its nonempty WAV in the `file` part. Receive the entire request, validat
 {
   "operation": "segment",
   "media_id": "00000000-0000-4000-8000-000000000002",
-  "purpose": "Meeting notes",
   "annotations": {},
   "segment": {"index": 0, "start_frame": 0, "frame_count": 28800000}
 }
@@ -92,7 +89,6 @@ This example is a complete 602-second recording using a 600-second segment lengt
 {
   "operation": "finalize",
   "media_id": "00000000-0000-4000-8000-000000000002",
-  "purpose": "Meeting notes",
   "annotations": {"meeting": {"topic": "Weekly review"}},
   "capture": {"end_reason": "stopped", "completeness": "complete"},
   "segments": [
@@ -164,7 +160,7 @@ The first successful save for an identity is authoritative. Persist the operatio
 
 No SHA-256, other digest, or byte comparison is required. A receiver need not detect changed bytes under identical identity and metadata; it retains the first saved file. The client must keep bytes unchanged.
 
-Changed annotations, time ranges, manifests, filenames, or media types under the same operation identity cause HTTP 409 / `idempotency_conflict`. Changed purpose, including empty versus nonempty, or changed delivery mode for one media ID is also a conflict.
+Changed annotations, time ranges, manifests, filenames, or media types under the same operation identity cause HTTP 409 / `idempotency_conflict`. Changed delivery mode for one media ID is also a conflict.
 
 After successful `finalize`, valid retries of saved requests still succeed. New segments outside the manifest cause 409 / `recording_finalized`. A failed finalization must not prematurely lock the recording. Empty annotations on old segment retries never overwrite final annotations.
 
