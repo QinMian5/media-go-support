@@ -1,5 +1,5 @@
 Media Go Privacy Policy
-Updated: October 7, 2026
+Updated: October 9, 2026
 
 Media Go is an audio capture tool developed by Mian Qin. You can record locally, add annotations, and upload to a receiver you configure. Each user manages their own receiver for normal use. The developer also provides a test receiver exclusively for Apple review.
 
@@ -9,7 +9,7 @@ The app records only after you start a capture and grant microphone access. Audi
 
 Without a configured receiver, items that are not already bound to a receiver stay on this device. After you configure a receiver, pending items can resume delivery according to their delivery mode. Whole recording sends the complete audio after you confirm annotations. Continuous upload sends audio segments while recording, then sends the recording manifest and final annotations after you stop and confirm.
 
-Your receiver receives audio, the annotations you enter, and the item ID, capture time, duration, segment order, and completeness information needed for delivery. Connection tests contact the URL you enter. The receiver can also see your network address and any authentication information you configure.
+Your receiver receives audio, the annotations you enter, and the item ID, capture time zone, duration, segment order, and completeness information needed for delivery. Connection tests contact the URL you enter. The receiver can also see your network address and any authentication information you configure.
 
 You choose and manage your receiver. Its service determines storage, access, further processing, and deletion. The Media Go developer does not automatically receive your recordings or annotations. Use a receiver you trust and HTTPS for public connections. Plain HTTP is not encrypted; any protection from a VPN or Tailscale tunnel is provided by that service.
 
@@ -31,7 +31,11 @@ Retention and deletion
 
 Audio that has not finished uploading stays on this device unless you explicitly discard or delete the media item. By default, local audio becomes eligible for automatic cleanup 7 days after upload completes. You can choose Never, 1 day, 7 days, or 30 days. Cleanup runs when the app subsequently runs or performs relevant operations. Item records, annotations, and save receipts remain after cleanup, but local playback is no longer available.
 
-Deleting a media item removes its app record and local audio and abandons unfinished uploads. Segments already sent by continuous upload, requests in flight, and content already saved by a receiver are not recalled. Delete receiver-side data in that service. Changing the receiver URL does not recall content already sent.
+Before confirming a recording, Discard and Record again remove the old recording locally and request deletion from each known receiver destination. Record again creates a new recording with the original button settings and annotation draft. Cleanup can remain pending while offline or require attention if a receiver does not support deletion or rejects the request. The Media screen shows cleanup progress and lets you retry. Completion depends on the receiver; the app cannot independently verify its physical storage or recovery backups. Minimal recording identities, destination URLs, and cleanup state remain on this device to resume cleanup and prevent old delivery callbacks from restoring the recording; no discarded audio or receiver credentials are kept in this cleanup record.
+
+Ordinary deletion from the media library removes the app record and local audio and abandons unfinished uploads. It does not request deletion of content already saved by a receiver. Delete receiver-side data in that service. Changing the receiver URL does not recall content already sent.
+
+The dedicated Apple review receiver also supports the app's deletion requests. It retains only the withdrawn recording's random identifier to reject late uploads after removal; this marker contains no audio, annotations, or authentication information. Platform recovery backups follow the retention described above.
 
 iOS device backups, system diagnostics, and TestFlight crash reports and voluntary feedback are managed by Apple's respective features and privacy policies. If you submit feedback, the developer may receive the description, screenshots, or diagnostics you choose to share.
 
